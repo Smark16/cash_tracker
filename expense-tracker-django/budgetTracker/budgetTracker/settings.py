@@ -81,7 +81,7 @@ DATABASES = {
         #'ENGINE': 'django.db.backends.sqlite3',
         #'NAME': BASE_DIR / 'db.sqlite3',
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'Expense-Tracker',
+        'NAME': 'Expense_Tracker',
         'USER':'postgres',
         'PASSWORD':'smark',
         'HOST':'localhost',
@@ -125,6 +125,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+MEDIA_URL = '/user_profile/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'user_profile/')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

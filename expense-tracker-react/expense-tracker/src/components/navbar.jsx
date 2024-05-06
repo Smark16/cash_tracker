@@ -37,34 +37,6 @@ function Navbar() {
             </Link>
           </li>
 
-          <li className={location.pathname === '/notifications' ? 'activeLink' : ''}>
-            <Link to='/notifications'>
-              <i className="bi bi-bell-fill"></i> <span>Notifications</span>
-            </Link>
-          </li>
-
-          <li className={location.pathname === '/reports' ? 'activeLink' : ''}>
-            <Link to='/reports'>
-              <i className="bi bi-flag"></i> <span>Reports</span>
-            </Link>
-          </li>
-
-          <li className={location.pathname === '/statistics' ? 'activeLink' : ''}>
-            <Link to='/statistics'>
-              <i className="bi bi-bar-chart-line"></i> <span>Statistics</span>
-            </Link>
-          </li>
-
-          <li>
-            <input type='checkbox' className='check' onClick={toggleButton} />
-          </li>
-
-          <li className='set'>
-            <Link to='/settings'>
-              <i className="bi bi-gear-fill"></i> <span>Settings</span>
-            </Link>
-          </li>
-
           <li className='logout'>
             <Link to='/logout'><span>Logout</span></Link>
           </li>

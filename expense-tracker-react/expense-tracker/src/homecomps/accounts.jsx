@@ -3,7 +3,7 @@ import Transactions from './transactions';
 import '../App.css';
 import useFetch from './customhook';
 
-const url = 'http://127.0.0.1:8000/expenseApi/'
+const catsUrl = 'http://127.0.0.1:8000/expenseApi/'
 
 function Accounts({newAmount, income}) {
   const [account, setAccount] = useState('');
@@ -14,8 +14,9 @@ function Accounts({newAmount, income}) {
   const [reduce, setReduce] = useState(false)
   const [selectedCurrency, setSelectedCurrency] = useState('USD')
  
-const {categories, loading} = useFetch(url)
+const {categories, loading} = useFetch(catsUrl)
 
+console.log(categories)
   const showAccount = () => {
     setDisplayForm(true);
   };
@@ -62,9 +63,9 @@ setSelectedCurrency(value)
 
     <>
 
-    <div className='row'>
+    <div className='row_accounts'>
 
-      <div className='col-md-4 col-sm-12'>
+      <div className='row_main'>
       <div className="accounts">
       <h2>Accounts</h2>
 
@@ -108,15 +109,19 @@ setSelectedCurrency(value)
           </button>
         </form>
       )}
+{/* end of Accounts  */}
+</div>
 
-      <h2>Categories</h2>
+<div className="row_cats">
+<h2>Categories</h2>
       <ul>
         {loading ? (<div class="loader"></div>) : (
           <>
            {categories.slice(0, 5).map((categorie) => {
-          const { name, id } = categorie;
+          const { name,image, id } = categorie;
           return (
-            <li key={id}>
+            <li key={id} className='d-flex li_cat'>
+              <img src={`http://127.0.0.1:8000${image}`} alt='image' className='cat_img'></img>
               <span>{name}</span>
             </li>
           );
@@ -135,10 +140,11 @@ setSelectedCurrency(value)
 {reduce && (
   <>
   {categories.slice(5, 9).map(cat =>{
-    const {id, name} = cat
+    const {id, name, image} = cat
     return (
       <>
-      <li key={id}>
+      <li key={id} className='li_cat'>
+      <img src={`http://127.0.0.1:8000${image}`} alt='image' className='cat_img'></img>
        <span>{name}</span>
         </li>
       </>
@@ -166,10 +172,11 @@ setSelectedCurrency(value)
           </select>
         </li>
       </ul>
-    </div>
+</div>
+      
       </div>
 
-      <div className='col-md-8 col-sm-12 dai'>
+      <div className='dai'>
       <Transactions selectedCurrency={selectedCurrency}/>
       </div>
      </div>

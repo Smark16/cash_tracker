@@ -27,6 +27,7 @@ console.log(formData)
 
 axios.post(url, formData)
 .then(response => {
+  console.log(response)
  if(response.data.bool === false){
   setErrMsg(response.data.msg)
   window.location.href = '/login'
@@ -34,6 +35,7 @@ axios.post(url, formData)
  if(response.data.bool === true){
   localStorage.setItem('user_login', true)
   localStorage.setItem('user_name', response.data.user)
+  localStorage.setItem('user_id', response.data.user_id)
   window.location.href = '/'
  }
 })
